@@ -30,4 +30,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image
-        run: docker push ti4g0br/nlw.unite.passin:${{ steps.generate_sha.outputs.sha }}
+        run: |
+          docker push ti4g0br/nlw.unite.passin:${{ steps.generate_sha.outputs.sha }}
+          docker tag ti4g0br/nlw.unite.passin:${{ steps.generate_sha.outputs.sha }} ti4g0br/nlw.unite.passin:latest
+          docker push ti4g0br/nlw.unite.passin:latest
