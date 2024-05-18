@@ -34,3 +34,13 @@ jobs:
           docker push ti4g0br/nlw.unite.passin:${{ steps.generate_sha.outputs.sha }}
           docker tag ti4g0br/nlw.unite.passin:${{ steps.generate_sha.outputs.sha }} ti4g0br/nlw.unite.passin:latest
           docker push ti4g0br/nlw.unite.passin:latest
+
+      - name: Update image tag
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: main
+          valueFile: 'deploy/values.yaml'
+          propertyPath: 'image.tag'
+          value: ${{ steps.generate_sha.outputs.sha }}
+          commitChanges: true
+          message: 'Update image tag'
