@@ -2,7 +2,7 @@ replicaCount: 5
 image:
   repository: ti4g0br/nlw.unite.passin
   pullPolicy: Always
-  tag: 2da1553
+  tag: aac4ef0
   port: 3333
 imagePullSecrets: []
 nameOverride: ''
